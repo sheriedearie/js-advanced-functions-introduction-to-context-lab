@@ -68,4 +68,23 @@ function allWagesFor(employee){
         return e.date
         // allWagesFor aggregates all the dates' wages and adds them together
     })
+
+const wages = dates.reduce(function(memo, e){
+    return memo + wagesEarnedOnDate(employee, e)
+}, 0)
+
+return wages
+}
+// calculates that the employee earned 378 dollars
+
+function calculatePayroll(employeeArray){
+    return employeeArray.reduce(function(memo, rec){
+        return memo + allWagesFor(rec)
+    }, 0)
+}
+
+function findEmployeeByFirstName(srcArray, firstName){
+    return srcArray.find(function(rec){
+        return rec.firstName === firstName
+    })
 }
